@@ -6,11 +6,11 @@ from setuptools import setup, Extension
 
 
 if os.environ.get('READTHEDOCS', None) == 'True':
-    
+
     # Skip installing the C extension on ReadTheDocs
     extensions = []
     packages = ["wobble"]
-    
+
 else:
 
     import tensorflow as tf
@@ -28,12 +28,12 @@ else:
                 "wobble/interp/interp_rev_op.cc",
             ],
             include_dirs=["wobble/interp"],
-            language="c++",
+            language="g++",
             extra_compile_args=compile_flags,
             extra_link_args=link_flags,
         ),
     ]
-    
+
     packages = ["wobble", "wobble.interp"]
 
 setup(
